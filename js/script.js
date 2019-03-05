@@ -53,7 +53,9 @@ function generateTitleLinks() {
     console.log('wywołano funkcję generateTitleLinks');
 
     // TO-DO:
-    /* remove contents of titleList */
+    /* [DONE] remove contents of titleList */
+    const titleList = document.querySelector(optTitleListSelector);
+    titleList.innerHTML = '';
 
     /* for each article */
 
