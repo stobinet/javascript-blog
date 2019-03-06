@@ -52,13 +52,13 @@ function generateTitleLinks() {
 
     console.log('wywołano funkcję generateTitleLinks');
 
-    // TO-DO:
     /* [DONE] remove content of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     titleList.innerHTML = '';
 
-    /* [DONE] for each article */
+    /* [DONE] find all the articles and save them to variable articles */
     const articles = document.querySelectorAll(optArticleSelector);
+    let html = '';
 
     for (let article of articles) {
 
@@ -74,13 +74,19 @@ function generateTitleLinks() {
         const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
         console.log(linkHTML);
 
-        /* [IN PROGRESS] insert link into titleList */
+        /* [DONE] insert link into html variable */
+        html = html + linkHTML;
+        console.log(html);
+
         // titleList.innerHTML = titleList.innerHTML + linkHTML;
-        titleList.insertAdjacentHTML('beforebegin', linkHTML);
-        console.log(titleList);
+        //titleList.insertAdjacentHTML('beforebegin', linkHTML);
+        //console.log(titleList);
 
     }
 
+    /* insert links into titleList */
+    titleList.innerHTML = html;
+    console.log(titleList);
 }
 
 generateTitleLinks();
