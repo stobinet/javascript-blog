@@ -291,14 +291,14 @@ function authorClickHandler(event) {
 
   }/* END LOOP: for each found tag link */
 
-  /* execute function "generateTitleLinks" with article selector as argument */
+  /* [DONE] execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-author="' + tag + '"]');
 }
 
 function addClickListenersToAuthors() {
   console.log('wywołano funkcję addClickListenersToAuthors');
 
-  /* find all links to authors */
+  /* [DONE] find all links to authors */
   const links = document.querySelectorAll('.post-author a');
   console.log(links);
 
