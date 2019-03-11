@@ -255,22 +255,18 @@ function authorClickHandler(event) {
   const clickedElement = this;
   console.log('Link was clicked!');
 
-  //[IN PROGRESS...]
+  //[ALL DONE]
 
-  /* make a new constant "href" and read the attribute "href" of the clicked element */
-  const href = clickedElement.getAttribute("href"); // null - ???
+  /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
+  const href = clickedElement.getAttribute("href");
   console.log(href);
 
-  //const href = clickedElement.getAttribute("data-author");
-  //console.log(href);
-
-  /* make a new constant "tag" and extract tag from the "href" constant */
-  //const tag = href.replace('#tag-', '');
-  const tag = href;
+  /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
+  const tag = href.replace('#', '');
   console.log(tag);
 
-  /* find all tag links with class active */
-  const links = document.querySelectorAll('a.active[href^="#"]'); //????? NodeList [], length: 0;
+  /* [DONE] find all tag links with class active */
+  const links = document.querySelectorAll('a.active[href^="#"]');
   console.log(links);
 
   /* START LOOP: for each active tag link */
@@ -282,9 +278,9 @@ function authorClickHandler(event) {
 
   }/* END LOOP: for each active tag link */
 
-  /* find all tag links with "href" attribute equal to the "href" constant */
+  /* [DONE] find all author links with "href" attribute equal to the "href" constant */
   const allAuthorLinks = document.querySelectorAll(href);
-  console.log(allAuthorLinks); //????? NodeList [], length: 0;
+  console.log(allAuthorLinks);
 
   /* START LOOP: for each found tag link */
   for (let tag of allAuthorLinks) {
@@ -297,14 +293,13 @@ function authorClickHandler(event) {
 
   /* execute function "generateTitleLinks" with article selector as argument */
   generateTitleLinks('[data-author="' + tag + '"]');
-  //generateTitleLinks('[data-author="' + '#' + '"]');
 }
 
 function addClickListenersToAuthors() {
   console.log('wywołano funkcję addClickListenersToAuthors');
 
   /* find all links to authors */
-  const links = document.querySelectorAll('.post-author');
+  const links = document.querySelectorAll('.post-author a');
   console.log(links);
 
   /* START LOOP: for each link */
