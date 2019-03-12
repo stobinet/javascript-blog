@@ -112,7 +112,7 @@ function generateTags() {
     let html = '';
 
     /* [DONE] get tags from data-tags attribute */
-    const articleTags = article.getAttribute("data-tags");
+    const articleTags = article.getAttribute('data-tags');
     console.log(articleTags);
 
     /* [DONE] split tags into array */
@@ -152,7 +152,7 @@ function tagClickHandler(event) {
   console.log('Link was clicked!');
 
   /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
-  const href = clickedElement.getAttribute("href");
+  const href = clickedElement.getAttribute('href');
   console.log(href);
 
   /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
@@ -160,7 +160,7 @@ function tagClickHandler(event) {
   console.log(tag);
 
   /* [DONE] find all tag links with class active */
-  const links = document.querySelectorAll('a.active[href^="#tag-"]'); //??? NodeList [], length: 0;
+  const links = document.querySelectorAll('a.active[href^="#tag-"]');
   console.log(links);
 
   /* START LOOP: for each active tag link */
@@ -174,7 +174,7 @@ function tagClickHandler(event) {
 
   /* find all tag links with "href" attribute equal to the "href" constant */
   const allTagLinks = document.querySelectorAll(href);
-  console.log(allTagLinks); //??? NodeList [], length: 0;
+  console.log(allTagLinks);
 
   /* START LOOP: for each found tag link */
   for (let tag of allTagLinks) {
@@ -224,7 +224,7 @@ function generateAuthors() {
     let html = '';
 
     /* [DONE] get author from data-author attribute */
-    const author = article.getAttribute("data-author");
+    const author = article.getAttribute('data-author');
     console.log(author);
 
     /* [DONE] generate HTML of the link */
@@ -258,7 +258,7 @@ function authorClickHandler(event) {
   //[ALL DONE]
 
   /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
-  const href = clickedElement.getAttribute("href");
+  const href = clickedElement.getAttribute('href');
   console.log(href);
 
   /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
