@@ -97,6 +97,34 @@ function generateTitleLinks(customSelector = '') {
 
 generateTitleLinks();
 
+function calculateTagsParams(tags) {
+  console.log('wywołano funkcję calculateTagsParams');
+
+  const params = { max: 0, min: 999999 };
+
+  /* START LOOP: for each tag */
+  for (let tag in tags) {
+
+    console.log(tag + ' is used ' + tags[tag] + ' times');
+
+    if (tags[tag] < params.min) {
+      params.min = tags[tag];
+    }
+
+    if (tags[tag] > params.max) {
+      params.max = tags[tag];
+    }
+
+    /* [DONE] find min and max values of the params */
+    params.min = Math.min(tags[tag], params.min);
+    params.max = Math.max(tags[tag], params.max);
+
+  } /* END LOOP: for each tag */
+
+  return params;
+
+}
+
 function generateTags() {
   console.log('wywołano funkcję generateTags');
 
@@ -152,33 +180,37 @@ function generateTags() {
         allTags[tag]++;
       }
 
-  }/* END LOOP: for each tag */
+    }/* END LOOP: for each tag */
 
-  /* [DONE] insert HTML of all the links into the tags wrapper */
-  tagsWrapper.innerHTML = html;
-  console.log(tagsWrapper);
+    /* [DONE] insert HTML of all the links into the tags wrapper */
+    tagsWrapper.innerHTML = html;
+    console.log(tagsWrapper);
 
-} /* END LOOP: for every article: */
+  } /* END LOOP: for every article: */
 
-/* [NEW] find list of tags in right column */
-const tagList = document.querySelector('.tags');
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.tags');
 
-/* [NEW] add html from allTags to tagList */
-//tagList.innerHTML = allTags.join(' ');
-console.log(allTags);
+  /* [NEW] add html from allTags to tagList */
+  //tagList.innerHTML = allTags.join(' ');
+  console.log(allTags);
 
- /* [NEW] create variable for all links HTML code */
- let allTagsHTML = '';
+  /* [NEW] find min and max values of the tags instances */
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
 
- /* [NEW] START LOOP: for each tag in allTags */
- for (let tag in allTags) {
-     /* [NEW] generate code of a link and add it to allTagsHTML */
-     //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
-     allTagsHTML += '<li><a href="#' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') </li>';
- } /* [NEW] END LOOP: for each tag in allTags */
+  /* [NEW] create variable for all links HTML code */
+  let allTagsHTML = '';
 
- /* [NEW] add html from allTagsHTML to tagList */
- tagList.innerHTML = allTagsHTML;
+  /* [NEW] START LOOP: for each tag in allTags */
+  for (let tag in allTags) {
+    /* [NEW] generate code of a link and add it to allTagsHTML */
+    //allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    allTagsHTML += '<li><a href="#' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') </li>';
+  } /* [NEW] END LOOP: for each tag in allTags */
+
+  /* [NEW] add html from allTagsHTML to tagList */
+  tagList.innerHTML = allTagsHTML;
 
 }
 
