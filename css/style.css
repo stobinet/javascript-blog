@@ -32,6 +32,37 @@ body {
   color: #777777;
 }
 
+/* tag-size- */
+.tag-size-1 {
+  font-size: 80%;
+  color: #ccd9ff;
+  text-decoration: none;
+}
+
+.tag-size-2 {
+  font-size: 100%;
+  color: #99b3ff;
+  text-decoration: none;
+}
+
+.tag-size-3 {
+  font-size: 120%;
+  color: #4d79ff;
+  text-decoration: none;
+}
+
+.tag-size-4 {
+  font-size: 160%;
+  color: #0039e6;
+  text-decoration: none;
+}
+
+.tag-size-5 {
+  font-size: 200%;
+  color: #00134d;
+  text-decoration: none;
+}
+
 /* Layout */
 .wrapper {
   display: -ms-flexbox;
@@ -75,6 +106,15 @@ body {
 
 .list .active {
   font-weight: bold;
+}
+
+.list.tags {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 
 .list-horizontal li {
