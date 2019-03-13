@@ -130,7 +130,13 @@ function calculateTagsParams(tags) {
 function calculateTagClass(count, params) {
   console.log('wywołano funkcję calculateTagClass');
 
-  /* [IN PROGRESS] */
+  /* [DONE] set the correct class for the tag */
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
+
+  return optCloudClassPrefix + classNumber;
 
 }
 
