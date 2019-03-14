@@ -13,7 +13,7 @@ function titleClickHandler(event) {
   }
 
   /* [DONE] add class 'active' to the clicked link */
-    clickedElement.classList.add('active');
+  clickedElement.classList.add('active');
 
   /* [DONE] remove class 'active' from all articles */
   const activeArticles = document.querySelectorAll('.post.active');
@@ -37,7 +37,7 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleAuthorSelector = '.post-author',
-  //optTagsListSelector = '.list.tags',
+  optTagsListSelector = '.list.tags',
   //optTagsListSelector = '.tags.list',
   optArticleTagsSelector = '.post-tags .list',
   optCloudClassCount = 5,
@@ -182,7 +182,8 @@ function generateTags() {
   } /* END LOOP: for every article: */
 
   /* [NEW] find list of tags in right column */
-  const tagList = document.querySelector('.tags');
+  //const tagList = document.querySelector('.tags');
+  const tagList = document.querySelector(optTagsListSelector);
 
   /* [NEW] add html from allTags to tagList */
   //tagList.innerHTML = allTags.join(' ');
@@ -206,7 +207,8 @@ function generateTags() {
     /* [NEW] add html code to tagLinkHTML */
     //const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
     //const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '"' + 'href="#' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') </li>';
-    const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '"' + 'href="#' + tag + '">' + tag + '</a></li>';
+    //const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '"' + 'href="#tag' + tag + '">' + tag + '</a></li>';
+    const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
 
     allTagsHTML += tagLinkHTML;
 
@@ -258,49 +260,11 @@ function tagClickHandler(event) {
   generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
-function tagCloudClickHandler(event) {
-
-  /* [DONE] prevent default action for this event */
-  event.preventDefault();
-
-  /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
-  const clickedElement = this;
-
-  /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
-  const href = clickedElement.getAttribute('href');
-
-  /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
-  const tag = href.replace('#', '');
-
-  /* [DONE] find all tag links with class active */
-  const links = document.querySelectorAll('a.active[href^="#"]');
-
-  /* START LOOP: for each active tag link */
-  for (let tag of links) {
-
-    /* [DONE] remove class active */
-    tag.classList.remove('active');
-
-  } /* END LOOP: for each active tag link */
-
-  /* [DONE] find all links with "href" attribute equal to the "href" constant */
-  const allCloudLinks = document.querySelectorAll(href);
-
-  /* START LOOP: for each found tag link */
-  for (let tag of allCloudLinks) {
-
-    /* [DONE] add class active */
-    tag.classList.add('active');
-    } /* END LOOP: for each found tag link */
-
-  generateTitleLinks('[data-tags~="' + tag + '"]');
-
-}
-
 function addClickListenersToTags() {
 
   /* find all links to tags */
-  const links = document.querySelectorAll('.post-tags ul a');
+  const links = document.querySelectorAll('a[href^="#tag-"]');
+  //const links = document.querySelectorAll('.post-tags ul a');
 
   /* START LOOP: for each link */
   for (let link of links) {
@@ -310,15 +274,6 @@ function addClickListenersToTags() {
 
   }/* END LOOP: for each link */
 
-  const cloudLinks = document.querySelectorAll('.list.tags a');
-
-  /* START LOOP: for each cloudLink */
-  for (let link of cloudLinks) {
-
-    /* [DONE] add tagCloudClickHandler as event listener for that link */
-    link.addEventListener('click', tagCloudClickHandler);
-
-  } /* END LOOP: for each cloudLink */
 }
 
 addClickListenersToTags();
